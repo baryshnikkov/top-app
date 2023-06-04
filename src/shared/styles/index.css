@@ -1,0 +1,7 @@
+@import url('./variables/global.css');
+@import url('./reset.css');
+
+html {
+    font-family: Roboto, sans-serif;
+    color: var(--text);
+}

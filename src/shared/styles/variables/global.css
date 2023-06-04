@@ -1,0 +1,15 @@
+:root {
+    --bg: #ffffff;
+    --border: #eaeaea;
+    --text: #160042;
+    --hover: #6773f6;
+    --active: #6773f6;
+    /*--dark-bg: #FFFFFF;*/
+    /*--light-bg: #E2EEF1;*/
+    /*--hint: #ADBCC0;*/
+    /*--cancel: #FF7777;*/
+    /*--save: #62DE85;*/
+    /*--icon: #5ED3F3;*/
+    /*--accent: #00C8FF;*/
+    --max-width-content: 1240px;
+}

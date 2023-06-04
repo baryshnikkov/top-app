@@ -1,0 +1,21 @@
+.Header {
+    border-bottom: 2px solid var(--border);
+}
+
+.headerWrapper {
+    max-width: var(--max-width-content);
+    padding: 10px;
+    width: 100%;
+    margin: auto;
+}
+
+.menu {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    cursor: pointer;
+}
