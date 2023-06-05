@@ -1,0 +1,10 @@
+.MenuMobile {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.links {
+    padding: 32px;
+}

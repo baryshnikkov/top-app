@@ -4,6 +4,7 @@
     --text: #160042;
     --hover: #6773f6;
     --active: #6773f6;
+    --accent: #5d6eff;
     /*--dark-bg: #FFFFFF;*/
     /*--light-bg: #E2EEF1;*/
     /*--hint: #ADBCC0;*/
@@ -12,4 +13,16 @@
     /*--icon: #5ED3F3;*/
     /*--accent: #00C8FF;*/
     --max-width-content: 1240px;
+    --font-size-s: 12px;
+    --font-line-s: 16px;
+    --font-s: var(--font-size-s) / var(--font-line-s);
+    --font-size-m: 16px;
+    --font-line-m: 24px;
+    --font-m: var(--font-size-m) / var(--font-line-m);
+    --font-size-l: 24px;
+    --font-line-l: 32px;
+    --font-l: var(--font-size-l) / var(--font-line-l);
+    --font-size-xl: 32px;
+    --font-line-xl: 40px;
+    --font-xl: var(--font-size-xl) / var(--font-line-xl);
 }

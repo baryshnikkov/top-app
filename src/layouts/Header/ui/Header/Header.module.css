@@ -9,13 +9,6 @@
     margin: auto;
 }
 
-.menu {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    align-items: center;
-}
-
 .logo {
     cursor: pointer;
 }
