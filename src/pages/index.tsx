@@ -1,11 +1,12 @@
 import { CustomHead } from '@/shared/ui/CustomHead';
+import { HomePage } from '@/layouts/HomePage';
 
 export default function Home() {
     return (
         <>
             <CustomHead title="aromaTM" description="description" />
             <main>
-                <h1>hello world</h1>
+                <HomePage />
             </main>
         </>
     );

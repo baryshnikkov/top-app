@@ -5,3 +5,10 @@ html {
     font-family: Roboto, sans-serif;
     color: var(--text);
 }
+
+main {
+    max-width: var(--max-width-content);
+    padding: 16px;
+    width: 100%;
+    margin: auto;
+}

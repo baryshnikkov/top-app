@@ -2,11 +2,11 @@ import cls from './Header.module.css';
 import { cn } from '@/shared/lib/cn';
 import Image from 'next/image';
 import LogoIcon from '@/shared/assets/logos/logo.svg';
-import { Navbar } from '@/widgets/Navbar';
 import { HStack } from '@/shared/ui/Stack';
-import { AppLink } from '@/shared/ui/AppLink';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useRouter } from 'next/router';
+import { Desktop } from '../Desktop/Desktop';
+import { Mobile } from '../Mobile/Mobile';
+import { getRouteMain } from '@/shared/consts/router';
 
 interface HeaderProps {
     className?: string;
@@ -17,7 +17,7 @@ export function Header(props: HeaderProps) {
     const route = useRouter();
 
     const onClickLogo = () => {
-        route.push('/');
+        route.push(getRouteMain());
     };
 
     return (
@@ -29,15 +29,8 @@ export function Header(props: HeaderProps) {
                     alt="Лого aromaTM"
                     onClick={onClickLogo}
                 />
-                <Navbar />
-                <menu className={cls.menu}>
-                    <AppLink href="/purchases" alt="Корзина">
-                        <ShoppingCartIcon />
-                    </AppLink>
-                    <AppLink href="/login" variant="outline" alt="Войти">
-                        Войти
-                    </AppLink>
-                </menu>
+                <Desktop />
+                <Mobile />
             </HStack>
         </header>
     );
