@@ -1,0 +1,22 @@
+.header {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.video {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid var(--accent);
+    pointer-events: none;
+}
+
+.videoSmall {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid var(--accent);
+    pointer-events: none;
+    margin-top: 24px;
+}

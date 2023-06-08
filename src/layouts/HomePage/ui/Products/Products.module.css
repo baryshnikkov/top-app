@@ -1,0 +1,100 @@
+.Products {
+    margin-top: 62px;
+}
+
+.wrapper {
+    display: grid;
+    gap: 16px;
+    grid-template-areas: 'courses calculator calculator'
+                         'courses consultations other';
+}
+
+.courses {
+    grid-area: courses;
+    border: 2px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.calculator {
+    grid-area: calculator;
+    border: 2px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    cursor: pointer;
+}
+
+.consultations {
+    grid-area: consultations;
+    border: 2px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    cursor: pointer;
+}
+
+.other {
+    grid-area: other;
+    border: 2px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    cursor: pointer;
+}
+
+.playIcon {
+    font-size: 54px;
+    background-color: #e4fff4;
+    border-radius: 16px;
+    color: #68bd90;
+}
+
+.calculatorIcon {
+    font-size: 48px;
+    padding: 8px;
+    background-color: #fff2f2;
+    border-radius: 16px;
+    color: #ed6e6a;
+}
+
+.consultationsIcon {
+    font-size: 48px;
+    padding: 8px;
+    background-color: #e9f2ff;
+    border-radius: 16px;
+    color: #698ee4;
+}
+
+.otherIcon {
+    font-size: 48px;
+    padding: 8px;
+    background-color: #fff8e6;
+    border-radius: 16px;
+    color: #ecbb58;
+}
+
+.link {
+    display: block;
+    font-size: 24px;
+    margin: 24px 0;
+}
+
+.link:hover {
+    color: var(--hover);
+}
+
+.btn {
+    margin-top: auto;
+}
+
+.paragraph {
+    margin-bottom: 24px;
+}
+
+.wrapperSM {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

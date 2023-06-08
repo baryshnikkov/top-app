@@ -1,0 +1,13 @@
+.accoridon {
+    max-width: 60%;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.accoridonSM {
+    width: 100%;
+}
