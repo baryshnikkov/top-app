@@ -1,0 +1,17 @@
+.ratingWrapper {
+	display: inline-block;
+}
+
+.star {
+	width: 25px;
+	height: 25px;
+	padding: 2px;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.filled {
+	fill: var(--primary);
+}

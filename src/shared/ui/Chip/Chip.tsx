@@ -13,9 +13,13 @@ interface ChipProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Chip = memo((props: ChipProps): JSX.Element => {
-	const { className, children, size = 'medium', variant = 'primary' } = props;
+	const { className, children, size = 'medium', variant = 'primary', ...otherProps } = props;
 
-	return <div className={cn(cls.chip, {}, [className, cls[size], cls[variant]])}>{children}</div>;
+	return (
+		<div className={cn(cls.chip, {}, [className, cls[size], cls[variant]])} {...otherProps}>
+			{children}
+		</div>
+	);
 });
 
 Chip.displayName = 'Chip';
