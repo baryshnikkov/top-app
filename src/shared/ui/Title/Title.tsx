@@ -1,10 +1,10 @@
-import { ReactNode, useMemo } from 'react';
+import { HTMLAttributes, ReactNode, memo } from 'react';
 import { cn } from '@/shared/helpers/classNames';
 import cls from './Title.module.css';
 
 type VariantHeader = 'h1' | 'h2' | 'h3';
 
-interface TitleProps {
+interface TitleProps extends HTMLAttributes<HTMLHeadingElement> {
 	variant: VariantHeader;
 	className?: string;
 	children: ReactNode;
@@ -16,14 +16,17 @@ const mapVariantToClass: Record<VariantHeader, string> = {
 	h3: cls.h3,
 };
 
-export const Title = (props: TitleProps): JSX.Element => {
-	const { variant: HeaderTag, className, children } = props;
+export const Title = memo((props: TitleProps): JSX.Element => {
+	const { variant: HeaderTag, className, children, ...otherProps } = props;
 
-	const additional = useMemo(() => {
-		const variantClass = mapVariantToClass[HeaderTag];
+	const variantClass = mapVariantToClass[HeaderTag];
+	const additional = [className, variantClass];
 
-		return [className, variantClass];
-	}, [HeaderTag, className]);
+	return (
+		<HeaderTag className={cn('', {}, additional)} {...otherProps}>
+			{children}
+		</HeaderTag>
+	);
+});
 
-	return <HeaderTag className={cn(cls.Title, {}, additional)}>{children}</HeaderTag>;
-};
+Title.displayName = 'Title';
