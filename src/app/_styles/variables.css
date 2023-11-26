@@ -9,19 +9,3 @@
 	--green: #1DC37E;
 	--green-light: #C8F8E4;
 }
-
-* {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-}
-
-html, body {
-	color: var(--black);
-	background-color: #F5F6F8;
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
-}

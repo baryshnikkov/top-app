@@ -1,7 +1,12 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
-import './globals.css';
+import { Header } from '@/widgets/Header';
+import { SideBar } from '@/widgets/SideBar';
+import { Footer } from '@/widgets/Footer';
+import { cn } from '@/shared/helpers/classNames';
+import './_styles/index.css';
+import cls from './HomeLayout.module.css';
 
 const fonts = Noto_Sans_KR({ subsets: ['latin', 'cyrillic'], weight: ['300', '400', '500', '700'] });
 
@@ -19,7 +24,12 @@ export default function RootLayout(props: RootLayoutProps): JSX.Element {
 
 	return (
 		<html lang='ru'>
-			<body className={fonts.className}>{children}</body>
+			<body className={cn(fonts.className, {}, [cls.body])}>
+				<Header className={cls.header} />
+				<SideBar className={cls.sideBar} />
+				<main className={cls.content}>{children}</main>
+				<Footer className={cls.footer} />
+			</body>
 		</html>
 	);
 }
