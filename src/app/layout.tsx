@@ -5,8 +5,8 @@ import { Header } from '@/widgets/Header';
 import { SideBar } from '@/widgets/SideBar';
 import { Footer } from '@/widgets/Footer';
 import { cn } from '@/shared/helpers/classNames';
-import './_styles/index.css';
 import cls from './HomeLayout.module.css';
+import './_styles/index.css';
 
 const fonts = Noto_Sans_KR({ subsets: ['latin', 'cyrillic'], weight: ['300', '400', '500', '700'] });
 
