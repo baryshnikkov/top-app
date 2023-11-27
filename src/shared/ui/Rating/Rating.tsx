@@ -1,5 +1,5 @@
 'use client';
-import { HTMLAttributes, KeyboardEvent, memo, useEffect, useState } from 'react';
+import { HTMLAttributes, KeyboardEvent, useEffect, useState } from 'react';
 import { cn } from '@/shared/helpers/classNames';
 import StarIcon from '@/shared/assets/icons/star.svg';
 import cls from './Rating.module.css';
@@ -11,7 +11,7 @@ interface RatingProps extends HTMLAttributes<HTMLDivElement> {
 	setRating?: (rating: number) => void;
 }
 
-export const Rating = memo((props: RatingProps): JSX.Element => {
+export const Rating = (props: RatingProps): JSX.Element => {
 	const { className, isEditable = false, rating, setRating, ...otherProps } = props;
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
@@ -62,6 +62,4 @@ export const Rating = memo((props: RatingProps): JSX.Element => {
 			))}
 		</div>
 	);
-});
-
-Rating.displayName = 'Rating';
+};

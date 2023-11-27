@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/shared/helpers/classNames';
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
 import cls from './Button.module.css';
@@ -18,7 +18,7 @@ const mapArrowToClass: Record<VariantButton, string> = {
 	secondary: cls.arrowSecondary,
 };
 
-export const Button = memo((props: ButtonProps): JSX.Element => {
+export const Button = (props: ButtonProps): JSX.Element => {
 	const { className, children, variant = 'primary', arrow = 'none', ...otherProps } = props;
 
 	const colorArrowClass = mapArrowToClass[variant];
@@ -29,6 +29,4 @@ export const Button = memo((props: ButtonProps): JSX.Element => {
 			<ArrowIcon className={cn(cls.arrowIcon, {}, [colorArrowClass, cls[arrow]])} />
 		</button>
 	);
-});
-
-Button.displayName = 'Button';
+};

@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, memo } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/shared/helpers/classNames';
 import cls from './Chip.module.css';
 
@@ -12,7 +12,7 @@ interface ChipProps extends HTMLAttributes<HTMLDivElement> {
 	children: ReactNode;
 }
 
-export const Chip = memo((props: ChipProps): JSX.Element => {
+export const Chip = (props: ChipProps): JSX.Element => {
 	const { className, children, size = 'medium', variant = 'primary', ...otherProps } = props;
 
 	return (
@@ -20,6 +20,4 @@ export const Chip = memo((props: ChipProps): JSX.Element => {
 			{children}
 		</div>
 	);
-});
-
-Chip.displayName = 'Chip';
+};

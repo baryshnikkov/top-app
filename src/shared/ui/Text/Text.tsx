@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, memo } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/shared/helpers/classNames';
 import cls from './Text.module.css';
 
@@ -10,7 +10,7 @@ interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
 	size: TextSize;
 }
 
-export const Text = memo((props: TextProps): JSX.Element => {
+export const Text = (props: TextProps): JSX.Element => {
 	const { className, children, size, ...otherProps } = props;
 
 	return (
@@ -18,6 +18,4 @@ export const Text = memo((props: TextProps): JSX.Element => {
 			{children}
 		</p>
 	);
-});
-
-Text.displayName = 'Text';
+};

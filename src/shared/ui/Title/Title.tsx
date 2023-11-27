@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, memo } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/shared/helpers/classNames';
 import cls from './Title.module.css';
 
@@ -16,7 +16,7 @@ const mapVariantToClass: Record<VariantHeader, string> = {
 	h3: cls.h3,
 };
 
-export const Title = memo((props: TitleProps): JSX.Element => {
+export const Title = (props: TitleProps): JSX.Element => {
 	const { variant: HeaderTag, className, children, ...otherProps } = props;
 
 	const variantClass = mapVariantToClass[HeaderTag];
@@ -27,6 +27,4 @@ export const Title = memo((props: TitleProps): JSX.Element => {
 			{children}
 		</HeaderTag>
 	);
-});
-
-Title.displayName = 'Title';
+};
