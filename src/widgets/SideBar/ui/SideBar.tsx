@@ -1,5 +1,5 @@
 import { Menu } from '@/features/Menu';
-import { getMenu } from '@/entities/MenuData';
+import { firstLevelMenu, getMenu } from '@/entities/MenuData';
 import { cn } from '@/shared/helpers/classNames';
 import cls from './SideBar.module.css';
 
@@ -9,11 +9,12 @@ interface SideBarProps {
 
 export const SideBar = async (props: SideBarProps): Promise<JSX.Element> => {
 	const { className } = props;
-	const menu = await getMenu(0);
+	const firstCategory = 0;
+	const menu = await getMenu(firstCategory);
 
 	return (
 		<div className={cn(cls.sideBar, {}, [className])}>
-			<Menu menu={menu} />
+			<Menu menu={menu} firstLevelMenu={firstLevelMenu} firstCategory={firstCategory} />
 		</div>
 	);
 };

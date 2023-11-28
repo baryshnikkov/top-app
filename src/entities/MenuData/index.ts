@@ -1,5 +1,6 @@
 import { getMenu } from './api/getMainMenu';
-import { MenuItem } from './model/types/mainMenu';
+import { firstLevelMenu } from './constants/firstLevelMenu';
+import { FirstLevelMenuItem, MenuItem, PageItem } from './model/types/mainMenu';
 
-export { getMenu };
-export type { MenuItem };
+export { getMenu, firstLevelMenu };
+export type { MenuItem, FirstLevelMenuItem, PageItem };
