@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getMenu } from '@/entities/MenuData';
 import { getPage } from '@/entities/PageData';
+import { TopLevelCategory } from '@/shared/constants/levelCategory';
 
 export const metadata: Metadata = {
 	title: 'OWNTop | Продукты',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-	const menu = await getMenu(0);
+	const menu = await getMenu(TopLevelCategory.Courses);
 
 	return menu.flatMap((category) =>
 		category.pages.map((page) => {
