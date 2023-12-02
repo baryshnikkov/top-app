@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { TopPageComponent } from '@/widgets/TopPageComponent';
 import { firstLevelMenu, getMenu } from '@/entities/MenuData';
 import { getPage } from '@/entities/PageData';
+import { getProduct } from '@/entities/ProductData';
 
 interface TopLevelCategoryAliasProps {
 	params: {
@@ -34,16 +36,11 @@ export async function generateMetadata(props: TopLevelCategoryAliasProps): Promi
 export default async function TopLevelCategoryAliasPage(props: TopLevelCategoryAliasProps): Promise<JSX.Element> {
 	const { params } = props;
 	const page = await getPage(params.alias);
+	const products = await getProduct(page, 10);
 
-	if (!page) {
+	if (!page || !products) {
 		notFound();
 	}
 
-	return (
-		<div>
-			ProductsPage
-			<h1>alias = {params.alias}</h1>
-			<h2>title = {page.title}</h2>
-		</div>
-	);
+	return <TopPageComponent page={page} products={products} />;
 }
