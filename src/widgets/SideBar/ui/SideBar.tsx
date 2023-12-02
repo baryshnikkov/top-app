@@ -1,8 +1,8 @@
 import { Menu } from '@/features/Menu';
-import { firstLevelMenu, getMenu } from '@/entities/MenuData';
+import { MenuItem, firstLevelMenu, getMenu } from '@/entities/MenuData';
+import { TopLevelCategory } from '@/shared/constants/levelCategory';
 import { cn } from '@/shared/helpers/classNames';
 import cls from './SideBar.module.css';
-import { TopLevelCategory } from '@/shared/constants/levelCategory';
 
 interface SideBarProps {
 	className?: string;
@@ -10,12 +10,17 @@ interface SideBarProps {
 
 export const SideBar = async (props: SideBarProps): Promise<JSX.Element> => {
 	const { className } = props;
-	const firstCategory = TopLevelCategory.Courses;
-	const menu = await getMenu(firstCategory);
+
+	let menuByLevelCategory: Record<TopLevelCategory, MenuItem[]> = { 0: [], 1: [], 2: [], 3: [] };
+	for (const m of firstLevelMenu) {
+		const menu = await getMenu(m.id);
+
+		menuByLevelCategory[m.id] = menu;
+	}
 
 	return (
 		<div className={cn(cls.sideBar, {}, [className])}>
-			<Menu menu={menu} firstLevelMenu={firstLevelMenu} firstCategory={firstCategory} />
+			<Menu menu={menuByLevelCategory} firstLevelMenu={firstLevelMenu} />
 		</div>
 	);
 };
