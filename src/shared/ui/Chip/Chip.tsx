@@ -3,7 +3,7 @@ import { cn } from '@/shared/helpers/classNames';
 import cls from './Chip.module.css';
 
 type VariantChip = 'primary' | 'secondary' | 'red' | 'green' | 'grey';
-type SizeChip = 'medium' | 'large';
+type SizeChip = 'medium' | 'small';
 
 interface ChipProps extends HTMLAttributes<HTMLDivElement> {
 	className?: string;

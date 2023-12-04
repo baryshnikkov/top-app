@@ -1,5 +1,5 @@
 import { getPage } from './api/getPage';
-import { TopPageModel } from './model/types/page';
+import { HhData, TopPageModel } from './model/types/page';
 
 export { getPage };
-export type { TopPageModel };
+export type { TopPageModel, HhData };
