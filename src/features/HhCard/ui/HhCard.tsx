@@ -3,6 +3,7 @@ import { cn } from '@/shared/helpers/classNames';
 import RateIcon from '@/shared/assets/icons/rate.svg';
 import { Card } from '@/shared/ui/Card';
 import cls from './HhCard.module.css';
+import { priceRu } from '@/shared/helpers/priceRu';
 
 interface HhCardProps extends HhData {
 	className?: string;
@@ -20,7 +21,7 @@ export const HhCard = (props: HhCardProps): JSX.Element => {
 			<Card className={cls.salary}>
 				<div>
 					<div className={cls.title}>Начальный</div>
-					<div className={cls.salaryValue}>{juniorSalary}</div>
+					<div className={cls.salaryValue}>{priceRu(juniorSalary)}</div>
 					<div className={cls.rate}>
 						<RateIcon className={cls.filled} />
 						<RateIcon />
@@ -29,7 +30,7 @@ export const HhCard = (props: HhCardProps): JSX.Element => {
 				</div>
 				<div>
 					<div className={cls.title}>Средний</div>
-					<div className={cls.salaryValue}>{middleSalary}</div>
+					<div className={cls.salaryValue}>{priceRu(middleSalary)}</div>
 					<div className={cls.rate}>
 						<RateIcon className={cls.filled} />
 						<RateIcon className={cls.filled} />
@@ -38,7 +39,7 @@ export const HhCard = (props: HhCardProps): JSX.Element => {
 				</div>
 				<div>
 					<div className={cls.title}>Профессионал</div>
-					<div className={cls.salaryValue}>{seniorSalary}</div>
+					<div className={cls.salaryValue}>{priceRu(seniorSalary)}</div>
 					<div className={cls.rate}>
 						<RateIcon className={cls.filled} />
 						<RateIcon className={cls.filled} />
