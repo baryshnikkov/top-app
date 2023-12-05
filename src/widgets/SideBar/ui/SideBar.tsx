@@ -27,7 +27,7 @@ export const SideBar = async (props: SideBarProps): Promise<JSX.Element> => {
 
 	return (
 		<div className={cn(cls.sideBar, {}, [className])}>
-			<Logo className={cls.logo} />
+			<Logo />
 			<div>Search</div>
 			<Menu menu={menuByLevelCategory} firstLevelMenu={firstLevelMenu} />
 		</div>
