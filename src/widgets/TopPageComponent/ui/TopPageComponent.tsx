@@ -53,8 +53,7 @@ export const TopPageComponent = (props: TopPageComponentProps): JSX.Element => {
 					<Advantages advantages={page.advantages} />
 				</>
 			)}
-			{/* TODO */}
-			{/* {page.seoText && <Text size='medium'>{page.seoText}</Text>} */}
+			{page.seoText && <div className={cls.seo} dangerouslySetInnerHTML={{ __html: page.seoText }} />}
 			<Title variant='h2'>Получаемые навыки</Title>
 			{page.tags.map((t) => (
 				<Chip key={t} color='primary' className={cls.tag}>

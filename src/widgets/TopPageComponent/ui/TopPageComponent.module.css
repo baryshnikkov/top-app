@@ -17,3 +17,20 @@
 .tag {
 	margin: 0 10px 5px 0;
 }
+
+.seo h2 {
+	margin-top: 50px;
+	margin-bottom: 25px;
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 30px;
+}
+
+.seo p {
+	margin-bottom: 16px;
+}
+
+.seo li {
+	margin-bottom: 12px;
+	margin-left: 44px;
+}
