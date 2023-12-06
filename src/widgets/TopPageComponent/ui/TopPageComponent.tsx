@@ -1,11 +1,14 @@
+'use client';
+
+import { useReducer } from 'react';
 import { HhCard } from '@/features/HhCard';
+import { Sort, SortVariant, sortReducer } from '@/features/Sort';
 import { Advantages } from '@/features/Advantages';
 import { TopPageModel } from '@/entities/PageData';
 import { ProductModel } from '@/entities/ProductData';
 import { cn } from '@/shared/helpers/classNames';
 import { Title } from '@/shared/ui/Title';
 import { Chip } from '@/shared/ui/Chip';
-import { Text } from '@/shared/ui/Text';
 import cls from './TopPageComponent.module.css';
 
 interface TopPageComponentProps {
@@ -16,6 +19,11 @@ interface TopPageComponentProps {
 
 export const TopPageComponent = (props: TopPageComponentProps): JSX.Element => {
 	const { className, page, products } = props;
+	const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: 'rating' });
+
+	const setSort = (sort: SortVariant) => {
+		dispatchSort({ type: sort });
+	};
 
 	return (
 		<div className={cn('', {}, [className])}>
@@ -26,9 +34,9 @@ export const TopPageComponent = (props: TopPageComponentProps): JSX.Element => {
 						{products.length}
 					</Chip>
 				)}
-				<span>Сортировка</span>
+				<Sort sort={sort} setSort={setSort} />
 			</div>
-			<div>{products && products.map((p) => <div key={p._id}>{p.title}</div>)}</div>
+			<div>{sortedProducts && sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}</div>
 			{page.hh && (
 				<>
 					<div className={cls.hhTitle}>
