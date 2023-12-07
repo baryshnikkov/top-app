@@ -4,6 +4,7 @@ import { useReducer } from 'react';
 import { HhCard } from '@/features/HhCard';
 import { Sort, SortVariant, sortReducer } from '@/features/Sort';
 import { Advantages } from '@/features/Advantages';
+import { ProductCard } from '@/features/ProductCard';
 import { TopPageModel } from '@/entities/PageData';
 import { ProductModel } from '@/entities/ProductData';
 import { cn } from '@/shared/helpers/classNames';
@@ -36,7 +37,7 @@ export const TopPageComponent = (props: TopPageComponentProps): JSX.Element => {
 				)}
 				<Sort sort={sort} setSort={setSort} />
 			</div>
-			<div>{sortedProducts && sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}</div>
+			<div>{sortedProducts && sortedProducts.map((p) => <ProductCard key={p._id} product={p} />)}</div>
 			{page.hh && (
 				<>
 					<div className={cls.hhTitle}>

@@ -27,7 +27,7 @@
 	grid-area: footer;
 }
 
-@media (width <= 765px) {
+@media (width <= 825px) {
 	.body {
 		grid-template-areas: 
 			'header'
