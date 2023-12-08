@@ -31,7 +31,7 @@ export const TopPageComponent = (props: TopPageComponentProps): JSX.Element => {
 			<div className={cls.title}>
 				<Title variant='h1'>{page.title}</Title>
 				{products && (
-					<Chip variant='grey' size='medium'>
+					<Chip className={cls.productLength} variant='grey' size='medium'>
 						{products.length}
 					</Chip>
 				)}

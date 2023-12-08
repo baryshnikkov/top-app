@@ -1,15 +1,8 @@
+import { ReviewModel } from '@/shared/types/review';
+
 export interface ProductCharacteristic {
 	value: string;
 	name: string;
-}
-
-export interface ReviewModel {
-	_id: string;
-	name: string;
-	title: string;
-	description: string;
-	rating: number;
-	createdAt: Date;
 }
 
 export interface ProductModel {

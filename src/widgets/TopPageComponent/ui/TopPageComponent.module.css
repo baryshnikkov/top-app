@@ -6,6 +6,10 @@
 	justify-items: left;
 }
 
+.productLength {
+	align-self: center;
+}
+
 .hhTitle {
 	display: grid;
 	grid-template-columns: auto 1fr;
