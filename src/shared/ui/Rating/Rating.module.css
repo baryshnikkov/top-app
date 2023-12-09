@@ -1,5 +1,5 @@
 .ratingWrapper {
-	display: inline-block;
+	position: relative;
 }
 
 .star {
@@ -14,4 +14,15 @@
 
 .filled {
 	fill: var(--primary);
+}
+
+.errorMessage {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	color: var(--red);
+}
+
+.error {
+	stroke: var(--red);
 }

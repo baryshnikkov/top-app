@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { ProductModel } from '@/entities/ProductData';
+import { ReviewForm } from '@/entities/ReviewForm';
 import { Review } from '@/entities/Review';
 import { cn } from '@/shared/helpers/classNames';
 import { priceRu } from '@/shared/helpers/priceRu';
@@ -115,11 +116,13 @@ export const ProductCard = (props: ProductCardProps): JSX.Element => {
 					[]
 				)}
 			>
-				{product.reviews.length ? (
-					product.reviews.map((r) => <Review key={r._id} review={r} />)
-				) : (
-					<Text size='medium'>Отзывов еще нет</Text>
-				)}
+				{product.reviews.map((r) => (
+					<div key={r._id}>
+						<Review review={r} />
+						<Divider />
+					</div>
+				))}
+				<ReviewForm productId={product._id} />
 			</Card>
 		</>
 	);

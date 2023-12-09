@@ -1,18 +1,20 @@
 'use client';
-import { HTMLAttributes, KeyboardEvent, useEffect, useState } from 'react';
+import { ForwardedRef, KeyboardEvent, forwardRef, useEffect, useState } from 'react';
+import { FieldError } from 'react-hook-form';
 import { cn } from '@/shared/helpers/classNames';
 import StarIcon from '@/shared/assets/icons/star.svg';
 import cls from './Rating.module.css';
 
-interface RatingProps extends HTMLAttributes<HTMLDivElement> {
+interface RatingProps {
 	className?: string;
 	isEditable?: boolean;
 	rating: number;
 	setRating?: (rating: number) => void;
+	error?: FieldError;
 }
 
-export const Rating = (props: RatingProps): JSX.Element => {
-	const { className, isEditable = false, rating, setRating, ...otherProps } = props;
+export const Rating = forwardRef((props: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
+	const { className, isEditable = false, rating, setRating, error } = props;
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
 	useEffect(() => {
@@ -57,10 +59,13 @@ export const Rating = (props: RatingProps): JSX.Element => {
 	};
 
 	return (
-		<div className={cn(cls.ratingWrapper, {}, [className])} {...otherProps}>
+		<div className={cn(cls.ratingWrapper, { [cls.error]: Boolean(error) }, [className])} ref={ref}>
 			{ratingArray.map((star: JSX.Element, i: number) => (
 				<span key={i}>{star}</span>
 			))}
+			{error && <span className={cls.errorMessage}>{error.message}</span>}
 		</div>
 	);
-};
+});
+
+Rating.displayName = 'Rating';
