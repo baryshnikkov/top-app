@@ -99,6 +99,10 @@
 	line-height: 19px;
 }
 
+.rateTitle a:hover {
+	color: var(--primary);
+}
+
 .reviewButton {
 	margin-left: 20px;
 }

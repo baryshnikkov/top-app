@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ProductModel } from '@/entities/ProductData';
 import { ReviewForm } from '@/entities/ReviewForm';
 import { Review } from '@/entities/Review';
@@ -12,7 +12,6 @@ import { Card } from '@/shared/ui/Card';
 import { Rating } from '@/shared/ui/Rating';
 import { Button } from '@/shared/ui/Button';
 import { Divider } from '@/shared/ui/Divider';
-import { Text } from '@/shared/ui/Text';
 import { declOfNum } from '@/shared/helpers/declOfNum';
 import cls from './ProductCard.module.css';
 
@@ -24,14 +23,23 @@ interface ProductCardProps {
 export const ProductCard = (props: ProductCardProps): JSX.Element => {
 	const { className, product } = props;
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+	const reviewRef = useRef<HTMLDivElement>(null);
+
+	const scrollToReview = () => {
+		setIsReviewOpened(true);
+		reviewRef.current?.scrollIntoView({
+			behavior: 'smooth',
+			block: 'center',
+		});
+	};
 
 	const onReview = () => {
 		setIsReviewOpened(!isReviewOpened);
 	};
 
 	return (
-		<>
-			<Card className={cn(cls.product, {}, [className])}>
+		<div className={className}>
+			<Card className={cls.product}>
 				<div className={cls.logo}>
 					<Image
 						src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
@@ -65,7 +73,9 @@ export const ProductCard = (props: ProductCardProps): JSX.Element => {
 				<div className={cls.priceTitle}>цена</div>
 				<div className={cls.creditTitle}>кредит</div>
 				<div className={cls.rateTitle}>
-					{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+					<a href='#ref' onClick={scrollToReview}>
+						{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+					</a>
 				</div>
 				<Divider className={cls.hr} />
 				<div className={cls.description}>{product.description}</div>
@@ -115,6 +125,7 @@ export const ProductCard = (props: ProductCardProps): JSX.Element => {
 					},
 					[]
 				)}
+				ref={reviewRef}
 			>
 				{product.reviews.map((r) => (
 					<div key={r._id}>
@@ -124,6 +135,6 @@ export const ProductCard = (props: ProductCardProps): JSX.Element => {
 				))}
 				<ReviewForm productId={product._id} />
 			</Card>
-		</>
+		</div>
 	);
 };
