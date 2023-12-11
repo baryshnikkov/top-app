@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FirstLevelMenuItem, MenuItem, PageItem } from '@/entities/MenuData';
@@ -26,12 +27,31 @@ export const Menu = (props: MenuProps): JSX.Element => {
 	const pathname = usePathname();
 	const [menuState, setMenuState] = useState<Record<TopLevelCategory, MenuItem[]>>(menu);
 
+	const variants = {
+		visible: {
+			// marginBottom: 20,
+			transition: {
+				when: 'beforeChildren',
+				staggerChildren: 0.01,
+			},
+		},
+		hidden: { marginBottom: 0 },
+	};
+
+	const variantsChildren = {
+		visible: {
+			opacity: 1,
+			height: 'auto',
+		},
+		hidden: { opacity: 0, height: 0 },
+	};
+
 	const firstCategoryPathname = pathname.split('/')[1];
 	const firstCategory = mapFirstCategoryPathnameToFirstCategory[firstCategoryPathname];
 
 	const openSecondLevel = (secondCategory: string) => () => {
 		const newTopLevelCategory = menuState[firstCategory].map((m) => {
-			if (m._id.secondCategory == secondCategory) {
+			if (m._id.secondCategory === secondCategory) {
 				m.isOpened = !m.isOpened;
 			}
 
@@ -78,9 +98,15 @@ export const Menu = (props: MenuProps): JSX.Element => {
 							<div className={cls.secondLevel} onClick={openSecondLevel(m._id.secondCategory)}>
 								{m._id.secondCategory}
 							</div>
-							<div className={cn(cls.secondLevelBlock, { [cls.secondLevelBlockOpened]: m.isOpened }, [])}>
+							<motion.div
+								className={cls.secondLevelBlock}
+								layout
+								variants={variants}
+								initial={m.isOpened ? 'visible' : 'hidden'}
+								animate={m.isOpened ? 'visible' : 'hidden'}
+							>
 								{buildThirdLevel(m.pages, menuItem.route)}
-							</div>
+							</motion.div>
 						</div>
 					);
 				})}
@@ -92,17 +118,19 @@ export const Menu = (props: MenuProps): JSX.Element => {
 		return (
 			<>
 				{pages.map((p) => (
-					<Link
-						key={p.category}
-						href={`/${route}/${p.alias}`}
-						className={cn(
-							cls.thirdLevel,
-							{ [cls.thirdLevelActive]: `/${route}/${p.alias}` === pathname },
-							[]
-						)}
-					>
-						{p.category}
-					</Link>
+					<motion.div key={p._id} variants={variantsChildren}>
+						<Link
+							key={p.category}
+							href={`/${route}/${p.alias}`}
+							className={cn(
+								cls.thirdLevel,
+								{ [cls.thirdLevelActive]: `/${route}/${p.alias}` === pathname },
+								[]
+							)}
+						>
+							{p.category}
+						</Link>
+					</motion.div>
 				))}
 			</>
 		);
