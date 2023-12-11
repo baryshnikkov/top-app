@@ -37,7 +37,7 @@ export const TopPageComponent = (props: TopPageComponentProps): JSX.Element => {
 				)}
 				<Sort sort={sort} setSort={setSort} />
 			</div>
-			<div>{sortedProducts && sortedProducts.map((p) => <ProductCard key={p._id} product={p} />)}</div>
+			<div>{sortedProducts && sortedProducts.map((p) => <ProductCard key={p._id} product={p} layout />)}</div>
 			{page.hh && (
 				<>
 					<div className={cls.hhTitle}>
