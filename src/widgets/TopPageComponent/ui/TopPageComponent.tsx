@@ -9,6 +9,7 @@ import { TopPageModel } from '@/entities/PageData';
 import { ProductModel } from '@/entities/ProductData';
 import { cn } from '@/shared/helpers/classNames';
 import { Title } from '@/shared/ui/Title';
+import { useScrollY } from '@/shared/hooks/useScrollY';
 import { Chip } from '@/shared/ui/Chip';
 import cls from './TopPageComponent.module.css';
 
@@ -21,6 +22,7 @@ interface TopPageComponentProps {
 export const TopPageComponent = (props: TopPageComponentProps): JSX.Element => {
 	const { className, page, products } = props;
 	const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: 'rating' });
+	const y = useScrollY();
 
 	const setSort = (sort: SortVariant) => {
 		dispatchSort({ type: sort });
