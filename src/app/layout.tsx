@@ -5,6 +5,7 @@ import { Header } from '@/widgets/Header';
 import { SideBar } from '@/widgets/SideBar';
 import { Footer } from '@/widgets/Footer';
 import { cn } from '@/shared/helpers/classNames';
+import { ButtonUp } from '@/shared/ui/ButtonUp';
 import cls from './layout.module.css';
 import '@/shared/styles/global.css';
 
@@ -29,6 +30,7 @@ export default function RootLayout(props: RootLayoutProps): JSX.Element {
 				<SideBar className={cls.sideBar} />
 				<main className={cls.content}>{children}</main>
 				<Footer className={cls.footer} />
+				<ButtonUp />
 			</body>
 		</html>
 	);
