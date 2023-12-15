@@ -1,11 +1,10 @@
 'use client';
 
-import { ButtonHTMLAttributes, useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { cn } from '@/shared/helpers/classNames';
 import { useScrollY } from '@/shared/hooks/useScrollY';
-import ArrowUpIcon from '@/shared/assets/icons/arrowUp.svg';
-import cls from './ButtonUp.module.css';
+import { ButtonIcon } from '@/shared/ui/ButtonIcon';
 
 interface ButtonUpProps {
 	className?: string;
@@ -24,17 +23,12 @@ export const ButtonUp = (props: ButtonUpProps): JSX.Element => {
 	};
 
 	useEffect(() => {
-		controls.start({ opacity: y / document.body.scrollHeight });
+		controls.start({ opacity: document.body.scrollHeight / y > 15 ? 0 : 1 });
 	}, [y, controls]);
 
 	return (
-		<motion.button
-			className={cn(cls.buttonUp, {}, [className])}
-			animate={controls}
-			initial={{ opacity: 0 }}
-			onClick={scrollToTop}
-		>
-			<ArrowUpIcon />
-		</motion.button>
+		<motion.div className={cn('', {}, [className])} animate={controls} initial={{ opacity: 0 }}>
+			<ButtonIcon variant='primary' icon='up' onClick={scrollToTop} />
+		</motion.div>
 	);
 };
