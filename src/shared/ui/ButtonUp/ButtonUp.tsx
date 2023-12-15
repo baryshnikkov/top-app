@@ -5,6 +5,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { cn } from '@/shared/helpers/classNames';
 import { useScrollY } from '@/shared/hooks/useScrollY';
 import { ButtonIcon } from '@/shared/ui/ButtonIcon';
+import cls from './ButtonUp.module.css';
 
 interface ButtonUpProps {
 	className?: string;
@@ -27,7 +28,7 @@ export const ButtonUp = (props: ButtonUpProps): JSX.Element => {
 	}, [y, controls]);
 
 	return (
-		<motion.div className={cn('', {}, [className])} animate={controls} initial={{ opacity: 0 }}>
+		<motion.div className={cn(cls.buttonUp, {}, [className])} animate={controls} initial={{ opacity: 0 }}>
 			<ButtonIcon variant='primary' icon='up' onClick={scrollToTop} />
 		</motion.div>
 	);

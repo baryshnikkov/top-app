@@ -27,7 +27,7 @@ export const ButtonIcon = (props: ButtonIconProps): JSX.Element => {
 
 	return (
 		<button className={cn(cls.button, {}, [className, cls[variant]])} {...otherProps}>
-			<Icon />
+			<Icon className={cls[icon]} />
 		</button>
 	);
 };

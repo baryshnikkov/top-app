@@ -2,6 +2,7 @@ import { Menu } from '@/features/Menu';
 import { FirstLevelMenuItem, MenuItem, firstLevelMenu, getMenu } from '@/entities/MenuData';
 import { TopLevelCategory } from '@/shared/constants/levelCategory';
 import { cn } from '@/shared/helpers/classNames';
+import { Search } from '@/shared/ui/Search';
 import Logo from '@/shared/assets/icons/logo.svg';
 import cls from './SideBar.module.css';
 
@@ -28,7 +29,7 @@ export const SideBar = async (props: SideBarProps): Promise<JSX.Element> => {
 	return (
 		<div className={cn(cls.sideBar, {}, [className])}>
 			<Logo />
-			<div>Search</div>
+			<Search />
 			<Menu menu={menuByLevelCategory} firstLevelMenu={firstLevelMenu} />
 		</div>
 	);

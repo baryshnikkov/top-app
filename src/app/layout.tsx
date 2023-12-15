@@ -26,7 +26,7 @@ export default function RootLayout(props: RootLayoutProps): JSX.Element {
 	return (
 		<html lang='ru'>
 			<body className={cn(fonts.className, {}, [cls.body])}>
-				<Header className={cls.header} />
+				<Header className={cls.header} menu={<SideBar />} />
 				<SideBar className={cls.sideBar} />
 				<main className={cls.content}>{children}</main>
 				<Footer className={cls.footer} />
