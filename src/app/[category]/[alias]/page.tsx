@@ -30,6 +30,7 @@ export async function generateMetadata(props: TopLevelCategoryAliasProps): Promi
 	const page = await getPage(params.alias);
 	return {
 		title: page?.metaTitle,
+		description: page?.metaDescription,
 	};
 }
 
