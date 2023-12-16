@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, KeyboardEvent } from 'react';
 import { cn } from '@/shared/helpers/classNames';
 import SortIcon from '@/shared/assets/icons/sort.svg';
 import { SortVariant } from '../model/types/sort';
@@ -15,10 +15,18 @@ interface SortProps extends HTMLAttributes<HTMLDivElement> {
 export const Sort = (props: SortProps): JSX.Element => {
 	const { className, sort, setSort, ...otherProps } = props;
 
+	const onSortKey = (key: KeyboardEvent, s: SortVariant) => {
+		if (key.code === 'Space' || key.code === 'Enter') {
+			key.preventDefault();
+			setSort(s);
+		}
+	};
+
 	return (
 		<div className={cn(cls.sort, {}, [className])} {...otherProps}>
-			<span
+			<button
 				onClick={() => setSort('rating')}
+				onKeyDown={(key: KeyboardEvent) => onSortKey(key, 'rating')}
 				className={cn(
 					'',
 					{
@@ -29,9 +37,10 @@ export const Sort = (props: SortProps): JSX.Element => {
 			>
 				<SortIcon className={cls.sortIcon} />
 				По рейтингу
-			</span>
-			<span
+			</button>
+			<button
 				onClick={() => setSort('price')}
+				onKeyDown={(key: KeyboardEvent) => onSortKey(key, 'price')}
 				className={cn(
 					'',
 					{
@@ -42,7 +51,7 @@ export const Sort = (props: SortProps): JSX.Element => {
 			>
 				<SortIcon className={cls.sortIcon} />
 				По цене
-			</span>
+			</button>
 		</div>
 	);
 };
