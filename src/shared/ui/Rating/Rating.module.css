@@ -2,17 +2,13 @@
 	position: relative;
 }
 
-.star {
+.star svg {
 	width: 25px;
 	height: 25px;
 	padding: 2px;
 }
 
-.pointer {
-	cursor: pointer;
-}
-
-.filled {
+.filled svg {
 	fill: var(--primary);
 }
 
@@ -25,4 +21,8 @@
 
 .error {
 	stroke: var(--red);
+}
+
+.editable {
+	cursor: pointer;
 }

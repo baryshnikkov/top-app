@@ -15,10 +15,11 @@ import cls from './ReviewForm.module.css';
 interface ReviewFormProps {
 	className?: string;
 	productId: string;
+	isOpened: boolean;
 }
 
 export const ReviewForm = (props: ReviewFormProps): JSX.Element => {
-	const { className, productId } = props;
+	const { className, productId, isOpened } = props;
 	const {
 		register,
 		control,
@@ -63,12 +64,14 @@ export const ReviewForm = (props: ReviewFormProps): JSX.Element => {
 					placeholder='Имя'
 					error={errors.name}
 					{...register('name', { required: { value: true, message: 'Заполните имя' } })}
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<Input
 					className={cls.title}
 					placeholder='Заголовок отзыва'
 					error={errors.title}
 					{...register('title', { required: { value: true, message: 'Заполните заголовок' } })}
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<div className={cls.rating}>
 					<span>Оценка:</span>
@@ -83,6 +86,7 @@ export const ReviewForm = (props: ReviewFormProps): JSX.Element => {
 								ref={field.ref}
 								isEditable
 								error={errors.rating}
+								tabIndex={isOpened ? 0 : -1}
 							/>
 						)}
 					/>
@@ -92,9 +96,12 @@ export const ReviewForm = (props: ReviewFormProps): JSX.Element => {
 					placeholder='Текст отзыва'
 					error={errors.description}
 					{...register('description', { required: { value: true, message: 'Заполните описание' } })}
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<div className={cls.submit}>
-					<Button variant='primary'>Отправить</Button>
+					<Button variant='primary' tabIndex={isOpened ? 0 : -1}>
+						Отправить
+					</Button>
 					<span className={cls.info}>
 						* Перед публикацией отзыв пройдет предварительную модерацию и проверку
 					</span>
