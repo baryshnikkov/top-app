@@ -11,12 +11,15 @@ interface SkipLinkProps {
 export const SkipLink = (props: SkipLinkProps): JSX.Element => {
 	const { className } = props;
 	const [isSkipLinkDisplayed, setIsSkipLinkDisplayed] = useState<boolean>(false);
-	const mainBlock = document.querySelector('main');
 
 	const skipContentAction = (key: KeyboardEvent) => {
 		if (key.code === 'Space' || key.code === 'Enter') {
 			key.preventDefault();
-			mainBlock?.focus();
+
+			if (typeof window !== 'undefined') {
+				const mainBlock = document.querySelector('main');
+				mainBlock?.focus();
+			}
 		}
 	};
 
