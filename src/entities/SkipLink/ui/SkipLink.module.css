@@ -1,0 +1,14 @@
+.skipLink {
+	position: fixed;
+	top: 10px;
+	left: 30px;
+	display: block;
+	height: 0;
+	overflow: hidden;
+	color: var(--white);
+	background: var(--primary);
+}
+
+.displayed {
+	height: auto;
+}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -50,6 +50,7 @@ export const Menu = (props: MenuProps): JSX.Element => {
 	const firstCategory = mapFirstCategoryPathnameToFirstCategory[firstCategoryPathname];
 
 	const openSecondLevel = (secondCategory: string) => () => {
+		console.log(secondCategory);
 		const newTopLevelCategory = menuState[firstCategory].map((m) => {
 			if (m._id.secondCategory === secondCategory) {
 				m.isOpened = !m.isOpened;
@@ -59,6 +60,13 @@ export const Menu = (props: MenuProps): JSX.Element => {
 		});
 
 		setMenuState({ ...menuState, [firstCategory]: newTopLevelCategory });
+	};
+
+	const openSecondLevelKey = (key: KeyboardEvent, secondCategory: string) => {
+		if (key.code === 'Space' || key.code === 'Enter') {
+			key.preventDefault();
+			openSecondLevel(secondCategory)();
+		}
 	};
 
 	const buildFirstLevel = () => {
@@ -95,7 +103,12 @@ export const Menu = (props: MenuProps): JSX.Element => {
 
 					return (
 						<div key={m._id.secondCategory}>
-							<div className={cls.secondLevel} onClick={openSecondLevel(m._id.secondCategory)}>
+							<div
+								className={cls.secondLevel}
+								onClick={openSecondLevel(m._id.secondCategory)}
+								tabIndex={0}
+								onKeyDown={(key: KeyboardEvent) => openSecondLevelKey(key, m._id.secondCategory)}
+							>
 								{m._id.secondCategory}
 							</div>
 							<motion.div
@@ -105,7 +118,7 @@ export const Menu = (props: MenuProps): JSX.Element => {
 								initial={m.isOpened ? 'visible' : 'hidden'}
 								animate={m.isOpened ? 'visible' : 'hidden'}
 							>
-								{buildThirdLevel(m.pages, menuItem.route)}
+								{buildThirdLevel(m.pages, menuItem.route, m.isOpened ?? false)}
 							</motion.div>
 						</div>
 					);
@@ -114,12 +127,13 @@ export const Menu = (props: MenuProps): JSX.Element => {
 		);
 	};
 
-	const buildThirdLevel = (pages: PageItem[], route: string) => {
+	const buildThirdLevel = (pages: PageItem[], route: string, isOpened: boolean) => {
 		return (
 			<>
 				{pages.map((p) => (
 					<motion.div key={p._id} variants={variantsChildren}>
 						<Link
+							tabIndex={isOpened ? 0 : -1}
 							key={p.category}
 							href={`/${route}/${p.alias}`}
 							className={cn(

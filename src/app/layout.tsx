@@ -4,6 +4,7 @@ import { Noto_Sans_KR } from 'next/font/google';
 import { Header } from '@/widgets/Header';
 import { SideBar } from '@/widgets/SideBar';
 import { Footer } from '@/widgets/Footer';
+import { SkipLink } from '@/entities/SkipLink';
 import { cn } from '@/shared/helpers/classNames';
 import { ButtonUp } from '@/shared/ui/ButtonUp';
 import cls from './layout.module.css';
@@ -26,9 +27,12 @@ export default function RootLayout(props: RootLayoutProps): JSX.Element {
 	return (
 		<html lang='ru'>
 			<body className={cn(fonts.className, {}, [cls.body])}>
+				<SkipLink />
 				<Header className={cls.header} menu={<SideBar />} />
 				<SideBar className={cls.sideBar} />
-				<main className={cls.content}>{children}</main>
+				<main className={cls.content} tabIndex={0}>
+					{children}
+				</main>
 				<Footer className={cls.footer} />
 				<ButtonUp />
 			</body>

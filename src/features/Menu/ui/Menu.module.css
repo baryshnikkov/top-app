@@ -7,6 +7,7 @@
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 25px;
+	border: 1px solid rgb(0 0 0 / 0%);
 }
 
 .firstLevelActive,
@@ -36,11 +37,12 @@
 
 .thirdLevel {
 	display: block;
+	padding: 5px 0;
 	font-size: 14px;
 	font-weight: 500;
-	line-height: 29px;
 	color: var(--grey-dark);
 	cursor: pointer;
+	outline-offset: -1px;
 }
 
 .thirdLevelActive,

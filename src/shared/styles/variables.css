@@ -1,17 +1,17 @@
 :root {
 	--black: #3B434E;
-	--grey-dark: #787D85;
+	--grey-dark: #6C7077;
 	--grey-light: #EBEBEB;
 	--grey: #B3C0D9;
 	--white: #FFF;
 	--blue: #F9F8FF;
-	--primary: #7653FC;
+	--primary: #7351F5;
 	--primary-hover: #6142DC;
 	--red-dark: #DE0000;
 	--red-light: #FEA291;
 	--red: #FC836D;
-	--green: #1DC37E;
+	--green: #007B48;
 	--green-light: #C8F8E4;
 	--border: #DFDFDF;
 	--placeholder: #A4A4A4;
-}
+} 
